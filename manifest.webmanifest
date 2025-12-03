@@ -1,12 +1,13 @@
 {
-  "name": "MOTHDEMIENNE.EXE — Night Broadcast",
-  "short_name": "NightCast",
-  "start_url": "/demienne.moth/",
-  "scope": "/demienne.moth/",
+  "name": "MothDemienne: Chat",
+  "short_name": "MothChat",
+  "start_url": "/chat/",
+  "scope": "/chat/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000080",
   "lang": "en",
+  "id": "https://demiennemoth.github.io/chat/",
   "icons": [
     {
       "src": "favicon.svg",
