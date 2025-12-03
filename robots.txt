@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://demiennemoth.github.io/demienne.moth/sitemap.xml
+Sitemap: https://demiennemoth.github.io/chat/sitemap.xml
 
 # Yandex-specific (optional):
 Host: demiennemoth.github.io
