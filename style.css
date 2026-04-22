@@ -187,11 +187,11 @@ body {
 }
 .menu a::before {
   content: "▣ ";
-  color: #ff0040;
+  color: #8a8a8a;
 }
 .menu a:hover {
-  color: #ff0040;
-  text-shadow: 0 0 5px #ff0040, 0 0 10px #ff0040;
+  color: #8a8a8a;
+  text-shadow: 0 0 5px #8a8a8a, 0 0 10px #8a8a8a;
 }
 
 /* === Форум плитками === */
@@ -210,7 +210,7 @@ body {
   transition: 0.2s;
   color: #e0e0e0;
   text-decoration: none;
-  box-shadow: 0 0 8px rgba(255,0,64,0.1);
+  box-shadow: 0 0 8px rgba(180,180,180,0.12);
 }
 .thread-link img {
   width: 100%;
@@ -222,10 +222,10 @@ body {
 }
 .thread-link:hover {
   background: #1e1e1e;
-  border-color: #ff0040;
-  color: #ff0040;
+  border-color: #8a8a8a;
+  color: #8a8a8a;
   transform: scale(1.02);
-  box-shadow: 0 0 12px #ff0040;
+  box-shadow: 0 0 12px #8a8a8a;
 }
 .meta {
   font-size: 12px;
@@ -240,7 +240,7 @@ body {
   background: #111;
   padding: 15px;
   border: 1px solid #333;
-  box-shadow: 0 0 12px rgba(255,0,64,0.2);
+  box-shadow: 0 0 12px rgba(180,180,180,0.15);
 }
 .post {
   margin: 15px 0;
@@ -252,8 +252,8 @@ body {
 }
 .post:hover {
   background: #151515;
-  border: 1px solid #ff0040;
-  box-shadow: 0 0 10px rgba(255,0,64,0.2);
+  border: 1px solid #8a8a8a;
+  box-shadow: 0 0 10px rgba(180,180,180,0.18);
 }
 .post-header {
   font-size: 12px;
@@ -264,13 +264,13 @@ body {
   align-items: center;
 }
 .post-number {
-  color: #ff0040;
+  color: #8a8a8a;
   margin-right: 10px;
   cursor: pointer;
 }
 .collapse-btn {
   cursor: pointer;
-  color: #ff0040;
+  color: #8a8a8a;
   margin-left: auto;
   font-size: 12px;
 }
@@ -281,9 +281,9 @@ body {
   border: 1px solid #444;
 }
 .quote {
-  color: #ff0040;
+  color: #8a8a8a;
   display: block;
-  border-left: 2px solid #ff0040;
+  border-left: 2px solid #8a8a8a;
   padding-left: 6px;
   margin: 4px 0;
 }
@@ -294,7 +294,7 @@ body {
   padding: 12px;
   margin-bottom: 20px;
   border: 2px solid #444;
-  box-shadow: 0 0 8px rgba(255,0,64,0.1);
+  box-shadow: 0 0 8px rgba(180,180,180,0.12);
 }
 textarea, input[type="text"] {
   background: #000;
@@ -319,7 +319,7 @@ input[type="submit"], button {
 input[type="submit"]:hover, button:hover {
   background: #3a3a3a;
   color: #fff;
-  border-color: #ff0040;
+  border-color: #8a8a8a;
 }
 
 
@@ -511,7 +511,7 @@ select.input95 {
 /* Make subcategory links pop on hover/focus */
 .cat-link{
   transition: background .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
-  color: #3a3a3a; /* gray accent */
+  color: #3a3a3a; /* match dark gray text */
 }
 .cat-link:hover,
 .cat-link:focus{
