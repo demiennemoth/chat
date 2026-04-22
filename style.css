@@ -1,83 +1,112 @@
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #000;
+  background-color: #000; /* fallback */
   background-image: none;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #dcdcdc;
-  font-family: "VT323", monospace;
-  font-size: 14px;
-  line-height: 1.5;
+  font-family: 'VT323', monospace;
+  color: #fff;
 }
-
-* {
-  box-sizing: border-box;
-  cursor: url("images/cursor.png"), auto !important;
-}
-
-body.win95-bg {
-  background-color: #000;
-  background-image: none;
-  color: #e4e4e4;
-}
-
-a,
-button,
-[role="button"] {
-  cursor: pointer !important;
-}
-
-input,
-textarea,
-select {
-  cursor: text !important;
-}
-
 .icon {
   width: 96px;
   text-align: center;
   color: #dcdcdc;
+  cursor: pointer;
   font-size: 16px;
 }
-
 .icon img {
   width: 96px;
   height: 96px;
 }
 
-/* === Desktop === */
+/* === Общие стили === */
+* {
+  cursor: url('images/cursor.png'), auto !important;
+}
+
+body {
+  margin: 0;
+  background-color: #000;
+  background-image: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #dcdcdc;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* === Рабочий стол === */
 .desktop {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
   padding: 20px;
+  gap: 30px;
 }
 
-/* === Taskbar === */
+
+
+
+
+/* === Панель задач === */
 .taskbar {
   position: fixed;
   bottom: 0;
-  z-index: 9999;
+  width: 100%;
+  height: 40px;
+  background: #c0c0c0;
   display: flex;
   align-items: center;
   gap: 6px;
-  width: 100%;
-  height: 40px;
   padding: 3px 6px;
-  background: #c0c0c0;
   border-top: 2px solid #ffffff;
   box-shadow: inset 0 1px 0 #808080;
+  z-index: 9999;
+}
+
+#start-menu {
+  position: fixed;
+  left: 10px;
+  bottom: 48px;
+  background: #c0c0c0;
+  border: 2px solid #ffffff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  color: #000;
+  width: 240px;
+  min-height: 140px;
+  padding: 6px;
+  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #ffffff;
+  z-index: 10000;
+}
+
+#start-menu.hidden {
+  display: none;
+}
+
+#start-menu div {
+  padding: 6px 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: #000;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+}
+
+#start-menu div:hover {
+  background: #3a3a3a;
+  color: #ffffff;
 }
 
 .taskbar-time {
   margin-left: auto;
   padding: 0 15px;
-  color: #000;
+  color: #000000;
   font-size: 14px;
   user-select: none;
 }
@@ -89,146 +118,83 @@ select {
   justify-content: center;
   min-width: 72px;
   height: 32px;
-  margin: 4px;
+  background: #c0c0c0;
+  border: 2px solid #ffffff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
   padding: 2px 12px;
-  background: #c0c0c0;
-  border: 2px solid #ffffff;
-  border-right-color: #808080;
-  border-bottom-color: #808080;
-  color: #000;
+  margin: 4px;
   cursor: pointer;
+  color: #000;
   font-family: Tahoma, sans-serif;
-  font-size: 14px;
   font-weight: bold;
+  font-size: 14px;
 }
 
-#start-btn:active {
-  padding: 3px 11px;
-  border: 2px solid #808080;
-  border-right-color: #ffffff;
-  border-bottom-color: #ffffff;
-}
-
-#start-menu {
-  position: fixed;
-  left: 10px;
-  bottom: 48px;
-  z-index: 10000;
-  width: 240px;
-  min-height: 140px;
-  padding: 6px;
-  background: #c0c0c0;
-  border: 2px solid #ffffff;
-  border-right-color: #808080;
-  border-bottom-color: #808080;
-  box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #ffffff;
-  color: #000;
-}
-
-#start-menu.hidden {
-  display: none;
-}
-
-#start-menu div {
-  padding: 6px 8px;
-  border: 1px solid transparent;
-  color: #000;
-  cursor: pointer;
-  font-family: Tahoma, sans-serif;
-  font-size: 13px;
-}
-
-#start-menu div:hover {
-  background: #3a3a3a;
-  color: #fff;
-}
-
-/* === Generic windows === */
+/* === Окна (форум/треды/новости) === */
 .window {
   position: absolute;
   top: 100px;
   left: 100px;
-  display: flex;
-  flex-direction: column;
   width: 400px;
   height: 300px;
   background: #b7b5a8;
   border: 2px solid #000;
   box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080;
+  display: flex;
+  flex-direction: column;
   font-family: Tahoma, sans-serif;
 }
 
 .window-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background: #3a3a3a;
   height: 22px;
   padding: 5px 8px;
-  background: #3a3a3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
   border-bottom: 2px solid #000;
   box-shadow: inset 0 1px #fff, inset 0 -1px #000;
-  color: #fff;
   cursor: move;
   font-family: Tahoma, sans-serif;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.window-header .close-btn {
-  width: 22px;
-  height: 22px;
-  margin-left: 8px;
-  background: #c0c0c0 !important;
-  border: 2px solid #000;
-  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080;
-  color: #000 !important;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 18px;
-  text-align: center;
-}
-
-.window-header .close-btn:hover {
-  background: #808080;
 }
 
 .window-content {
   flex: 1;
-  overflow-y: auto;
   padding: 10px;
-  color: #000 !important;
+  overflow-y: auto;
+  color: #000000 !important;
   font-family: Tahoma, sans-serif;
 }
 
-/* === Menu === */
+/* === Меню === */
 .menu {
-  padding: 10px;
   background: #1a1a1a;
+  padding: 10px;
   border-bottom: 2px solid #333;
-  box-shadow: inset 0 0 10px #000;
-  font-size: 16px;
   text-align: center;
+  font-size: 16px;
+  box-shadow: 0 0 10px #000 inset;
 }
-
 .menu a {
-  position: relative;
   margin: 0 10px;
   color: #e0e0e0;
   text-decoration: none;
+  position: relative;
 }
-
 .menu a::before {
   content: "▣ ";
   color: #ff0040;
 }
-
 .menu a:hover {
   color: #ff0040;
   text-shadow: 0 0 5px #ff0040, 0 0 10px #ff0040;
 }
 
-/* === Boards === */
+/* === Форум плитками === */
 .board {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -236,544 +202,394 @@ select {
   width: 90%;
   margin: 20px auto;
 }
-
 .thread-link {
   display: block;
   padding: 12px;
   background: #b7b5a8;
   border: 1px solid #333;
-  box-shadow: 0 0 8px rgba(255, 0, 64, 0.1);
+  transition: 0.2s;
   color: #e0e0e0;
   text-decoration: none;
-  transition: 0.2s;
+  box-shadow: 0 0 8px rgba(255,0,64,0.1);
 }
-
 .thread-link img {
-  display: block;
   width: 100%;
   height: 120px;
+  object-fit: cover;
+  display: block;
   margin-bottom: 8px;
   border: 1px solid #333;
-  object-fit: cover;
 }
-
 .thread-link:hover {
-  transform: scale(1.02);
   background: #1e1e1e;
-  border-color: #8a8a8a;
-  box-shadow: 0 0 12px #8a8a8a;
-  color: #d0d0d0;
+  border-color: #ff0040;
+  color: #ff0040;
+  transform: scale(1.02);
+  box-shadow: 0 0 12px #ff0040;
 }
-
 .meta {
-  margin-top: 4px;
-  color: #777;
   font-size: 12px;
+  color: #777;
+  margin-top: 4px;
 }
 
-/* === Thread view === */
+/* === Тред и посты === */
 .thread {
-  width: 90%;
   margin: 20px auto;
-  padding: 15px;
+  width: 90%;
   background: #111;
+  padding: 15px;
   border: 1px solid #333;
-  box-shadow: 0 0 12px rgba(180, 180, 180, 0.15);
+  box-shadow: 0 0 12px rgba(255,0,64,0.2);
 }
-
 .post {
-  position: relative;
   margin: 15px 0;
   padding: 12px;
-  background: #1a1a1a;
   border: 1px dashed #444;
+  background: #1a1a1a;
   transition: background 0.2s, border 0.2s;
+  position: relative;
 }
-
 .post:hover {
   background: #151515;
-  border: 1px solid #8a8a8a;
-  box-shadow: 0 0 10px rgba(180, 180, 180, 0.18);
+  border: 1px solid #ff0040;
+  box-shadow: 0 0 10px rgba(255,0,64,0.2);
 }
-
 .post-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-  color: #999;
   font-size: 12px;
+  color: #999;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.post-number,
-.collapse-btn {
-  color: #9a9a9a;
-}
-
 .post-number {
+  color: #ff0040;
   margin-right: 10px;
   cursor: pointer;
 }
-
 .collapse-btn {
-  margin-left: auto;
   cursor: pointer;
+  color: #ff0040;
+  margin-left: auto;
   font-size: 12px;
 }
-
 .post img {
-  display: block;
   max-width: 200px;
+  display: block;
   margin: 6px 0;
   border: 1px solid #444;
 }
-
 .quote {
+  color: #ff0040;
   display: block;
-  margin: 4px 0;
+  border-left: 2px solid #ff0040;
   padding-left: 6px;
-  border-left: 2px solid #8a8a8a;
-  color: #a0a0a0;
+  margin: 4px 0;
 }
 
-/* === Forms === */
-.form-box,
-#reply-form {
-  margin-bottom: 20px;
-  padding: 12px;
+/* === Форма ответа === */
+.form-box, #reply-form {
   background: #222;
+  padding: 12px;
+  margin-bottom: 20px;
   border: 2px solid #444;
-  box-shadow: 0 0 8px rgba(180, 180, 180, 0.12);
+  box-shadow: 0 0 8px rgba(255,0,64,0.1);
 }
-
-textarea,
-input[type="text"] {
-  width: 100%;
+textarea, input[type="text"] {
   background: #000;
-  border: 1px solid #555;
   color: #e0e0e0;
-  font-family: "VT323", monospace;
+  border: 1px solid #555;
+  font-family: 'VT323', monospace;
   font-size: 14px;
+  width: 100%;
 }
-
 textarea {
   height: 90px;
   line-height: 1.4;
 }
-
-input[type="submit"],
-button {
+input[type="submit"], button {
   margin-top: 6px;
-  padding: 6px 10px;
   background: #111;
-  border: 1px solid #666;
   color: #e0e0e0;
+  border: 1px solid #666;
+  padding: 6px 10px;
   cursor: pointer;
 }
-
-input[type="submit"]:hover,
-button:hover {
+input[type="submit"]:hover, button:hover {
   background: #3a3a3a;
-  border-color: #8a8a8a;
   color: #fff;
+  border-color: #ff0040;
 }
 
-/* === Win95 theme === */
-:root {
-  --95-gray: #c0c0c0;
-  --95-dark: #808080;
-  --95-light: #dfdfdf;
-  --95-blue: #3a3a3a;
-  --95-white: #ffffff;
-  --95-black: #000000;
+
+.window-header .close-btn {
+  width: 22px;
+  height: 22px;
+  background: #c0c0c0 !important;
+  border: 2px solid #000;
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #808080;
+  color: black !important;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.window-header .close-btn:hover {
+  background: #808080;
 }
 
-.window95 {
-  margin: 24px auto 80px;
+#start-btn:active {
+  border: 2px solid #808080;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  padding: 3px 11px;
+}
+
+
+
+/* ===== Win95 forum/profile skin ===== */
+:root{
+  --95-gray:#c0c0c0;
+  --95-dark:#808080;
+  --95-light:#dfdfdf;
+  --95-blue:#3a3a3a;
+  --95-white:#ffffff;
+  --95-black:#000000;
+}
+body.win95-bg {
+  background-color: #0b0b0b;
+  background-image: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #e4e4e4;
+}
+.window95{
+  margin: 24px auto 80px auto;
   max-width: 1180px;
   background: var(--95-gray);
   border: 2px solid var(--95-light);
   border-right-color: var(--95-black);
   border-bottom-color: var(--95-black);
   box-shadow: inset -1px -1px 0 var(--95-dark), inset 1px 1px 0 var(--95-white);
-  color: #000;
   font-family: Tahoma, sans-serif;
+  color: #000;
 }
-
-.titlebar95 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.titlebar95{
+  background: linear-gradient(var(--95-blue), #1f1f1f);
+  color: #fff;
   padding: 4px 6px;
-  background: linear-gradient(var(--95-blue), #1f1f1f);
-  color: #fff;
-  user-select: none;
+  display:flex; align-items:center; gap:6px;
+  user-select:none;
 }
-
-.titlebar95 .icon {
-  width: 16px;
-  height: 16px;
-  background: #4a4a4a;
-  box-shadow: inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #1a1a1a;
-}
-
-.titlebar95 .title {
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.controls95 {
-  display: flex;
-  gap: 2px;
-  margin-left: auto;
-}
-
-.btn95 {
-  padding: 2px 8px;
+.titlebar95 .icon{width:16px;height:16px;background:#4a4a4a;box-shadow:inset 1px 1px 0 #7a7a7a, inset -1px -1px 0 #1a1a1a;}
+.titlebar95 .title{font-weight:bold; font-size:13px;}
+.controls95{margin-left:auto; display:flex; gap:2px;}
+.btn95{
   background: var(--95-gray);
-  border: 2px solid var(--95-white);
-  border-right-color: var(--95-dark);
-  border-bottom-color: var(--95-dark);
-  color: #000;
-  cursor: pointer;
-  font-size: 13px;
+  border:2px solid var(--95-white);
+  border-right-color: var(--95-dark); border-bottom-color: var(--95-dark);
+  padding:2px 8px; cursor:pointer; font-size:13px; color:#000;
 }
-
-.btn95:active {
-  padding: 3px 7px;
-  border: 2px solid var(--95-dark);
-  border-right-color: var(--95-white);
-  border-bottom-color: var(--95-white);
+.btn95:active{
+  border:2px solid var(--95-dark);
+  border-right-color: var(--95-white); border-bottom-color: var(--95-white);
+  padding:3px 7px;
 }
-
-.tb95 {
-  display: grid;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
-  padding: 0;
-  font: 12px "Tahoma", sans-serif;
-  line-height: 1;
+.tb95{width:18px;height:18px;display:grid;place-items:center;}
+.menubar95{display:flex; gap:8px; padding:3px 6px; border-bottom:1px solid var(--95-white);}
+.menu95{padding:1px 6px; cursor:default;}
+.menu95:hover{background:var(--95-blue); color:#fff;}
+.container95{display:grid; grid-template-columns: 240px 1fr; gap:8px; padding:8px;}
+.panel95{padding:6px;}
+.group95{font-weight:bold; background:var(--95-light); padding:3px 4px; border:1px solid var(--95-white); border-right-color:var(--95-dark); border-bottom-color:var(--95-dark);}
+.list95{list-style:none; padding:0; margin:6px 0 0 0;}
+.list95 li{margin:0; padding:2px 4px; cursor:default;}
+.list95 li:hover{background:#b5b5b5;}
+.toolbar95{display:flex; gap:6px; align-items:center; padding:4px; border:1px solid var(--95-white); border-right-color:var(--95-dark); border-bottom-color:var(--95-dark); background:var(--95-light);}
+.input95{
+  background:#fff; border:2px solid var(--95-dark);
+  border-right-color:var(--95-white); border-bottom-color:var(--95-white);
+  padding:3px 4px; font-size:13px; min-width:220px; color:#000;
 }
-
-.tb95:active {
-  border-style: inset;
+table.threads95{width:100%; border-collapse:collapse; margin-top:8px; background:#fff; font-size:13px; color:#000;}
+table.threads95 th, table.threads95 td{border:1px solid var(--95-dark); padding:6px 8px;}
+table.threads95 th{background:var(--95-light); text-align:left;}
+table.threads95 tr:hover td{background:#b5b5b5;}
+.subject95 a{color:#000; text-decoration:none;}
+.subject95 a:hover{text-decoration:underline;}
+.status95{display:flex; justify-content:space-between; padding:3px 6px; background:var(--95-gray);
+  border-top:2px solid var(--95-white); border-left:2px solid var(--95-white);
+  border-right:2px solid var(--95-dark); border-bottom:2px solid var(--95-dark);
+  font-size:12px; color:#000;
 }
+.modal95{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.35);}
+.modal95 .window95{width:560px; max-width:95%;}
+.row95{display:flex; gap:8px; margin:8px 0;}
+.row95 label{min-width:90px;}
+textarea.input95{width:100%; min-height:120px; resize:vertical;}
+@media (max-width: 860px){ .container95{grid-template-columns:1fr;} }
 
-.menubar95 {
-  display: flex;
-  gap: 8px;
-  padding: 3px 6px;
-  border-bottom: 1px solid var(--95-white);
-}
-
-.menu95,
-.menubtn95 {
-  height: 22px;
-  padding: 1px 6px;
-  cursor: default;
-  font: 13px "Tahoma", sans-serif;
-}
-
-.menubtn95 {
-  padding: 2px 12px;
-  margin: 0;
-}
-
-.menu95:hover {
-  background: var(--95-blue);
-  color: #fff;
-}
-
-.container95 {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 8px;
-  padding: 8px;
-}
-
-.panel95 {
-  padding: 6px;
-}
-
-.group95 {
-  padding: 3px 4px;
-  background: var(--95-light);
-  border: 1px solid var(--95-white);
-  border-right-color: var(--95-dark);
-  border-bottom-color: var(--95-dark);
-  font-weight: bold;
-}
-
-.group95--primary {
-  background: linear-gradient(var(--95-blue), #1f1f1f);
-  color: #fff;
-}
-
-.list95 {
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.list95 li {
-  margin: 0;
-  padding: 2px 4px;
-  cursor: default;
-}
-
-.list95 li:hover,
-table.threads95 tr:hover td,
-.cat-link:hover,
-.cat-link:focus {
-  background: #b5b5b5;
-}
-
-.cat-link {
-  color: #3a3a3a;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.cat-link:hover,
-.cat-link:focus {
-  border-color: var(--95-blue);
-  box-shadow: inset 0 0 0 1px #ffffff;
-  color: #000;
-  outline: none;
-}
-
-.toolbar95 {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px;
-  background: var(--95-light);
-  border: 1px solid var(--95-white);
-  border-right-color: var(--95-dark);
-  border-bottom-color: var(--95-dark);
-}
-
-.input95 {
-  min-width: 220px;
-  padding: 3px 4px;
-  background: #fff;
-  border: 2px solid var(--95-dark);
-  border-right-color: var(--95-white);
-  border-bottom-color: var(--95-white);
-  color: #000;
-  font-size: 13px;
-}
-
-table.threads95 {
-  width: 100%;
-  margin-top: 8px;
-  background: #fff;
-  border-collapse: collapse;
-  color: #000;
-  font-size: 13px;
-}
-
-table.threads95 th,
-table.threads95 td {
-  padding: 6px 8px;
-  border: 1px solid var(--95-dark);
-}
-
-table.threads95 th {
-  background: var(--95-light);
-  text-align: left;
-}
-
-.subject95 a {
-  color: #000;
-  text-decoration: none;
-}
-
-.subject95 a:hover {
-  text-decoration: underline;
-}
-
-.status95 {
-  display: flex;
-  justify-content: space-between;
-  padding: 3px 6px;
-  background: var(--95-gray);
-  border-top: 2px solid var(--95-white);
-  border-left: 2px solid var(--95-white);
-  border-right: 2px solid var(--95-dark);
-  border-bottom: 2px solid var(--95-dark);
-  color: #000;
-  font-size: 12px;
-  line-height: 1.2;
-}
-
-.status95 + .status95 {
-  margin-top: 2px;
-}
-
-.status95 a {
-  color: #000;
-  text-decoration: underline;
-}
-
-.status95 a:hover {
-  text-decoration: none;
-}
-
-.modal95 {
-  position: fixed;
-  inset: 0;
-  z-index: 10001;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.modal95 .window95 {
-  width: 560px;
-  max-width: 95%;
-}
-
-.row95 {
-  display: flex;
-  gap: 8px;
-  margin: 8px 0;
-}
-
-.row95 label {
-  min-width: 90px;
-}
-
+/* === Win95 textarea fix: white background & 3D border === */
 textarea.input95 {
-  width: 100%;
-  min-height: 120px;
-  resize: vertical;
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid var(--95-dark);
+  border-right-color: var(--95-white);
+  border-bottom-color: var(--95-white);
+  padding: 4px;
+  font-size: 13px;
   font-family: inherit;
 }
 
+/* === Win95 form overrides (stronger specificity) === */
 input.input95[type="text"],
 textarea.input95,
 select.input95 {
   background: #fff !important;
+  color: #000 !important;
   border: 2px solid var(--95-dark) !important;
   border-right-color: var(--95-white) !important;
   border-bottom-color: var(--95-white) !important;
   box-shadow: none !important;
+}
+
+/* Target the exact fields as a fallback */
+#reply-form textarea#reply-input,
+.toolbar95 input#searchBox[type="text"] {
+  background: #fff !important;
   color: #000 !important;
 }
 
+/* === Win95 reply form container & button overrides === */
 .window95 .form-box,
 .window95 #reply-form {
-  padding: 6px !important;
   background: var(--95-light) !important;
+  color: #000 !important;
+  padding: 6px !important;
   border: 1px solid var(--95-white) !important;
   border-right-color: var(--95-dark) !important;
   border-bottom-color: var(--95-dark) !important;
   box-shadow: none !important;
-  color: #000 !important;
 }
 
+/* Кнопка "Ответить" под Win95 */
 .window95 #reply-form button,
 .window95 .form-box button {
-  padding: 2px 8px !important;
   background: var(--95-gray) !important;
+  color: #000 !important;
   border: 2px solid var(--95-white) !important;
   border-right-color: var(--95-dark) !important;
   border-bottom-color: var(--95-dark) !important;
-  color: #000 !important;
-  cursor: pointer;
-  font-family: Tahoma, sans-serif !important;
+  padding: 2px 8px !important;
   font-size: 13px !important;
+  font-family: Tahoma, sans-serif !important;
+  cursor: pointer;
 }
-
 .window95 #reply-form button:active,
 .window95 .form-box button:active {
-  padding: 3px 7px !important;
   border: 2px solid var(--95-dark) !important;
   border-right-color: var(--95-white) !important;
   border-bottom-color: var(--95-white) !important;
+  padding: 3px 7px !important;
 }
 
-.note95 {
-  padding: 6px;
+
+/* === Categories primary highlight & hover (added) === */
+.group95--primary{
+  background: linear-gradient(var(--95-blue), #1f1f1f);
+  color:#fff;
+  border:1px solid var(--95-white);
+  border-right-color: var(--95-dark);
+  border-bottom-color: var(--95-dark);
+}
+
+/* Make subcategory links pop on hover/focus */
+.cat-link{
+  transition: background .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  color: #3a3a3a; /* gray accent */
+}
+.cat-link:hover,
+.cat-link:focus{
+  background:#b5b5b5; /* same hover tint as threads */
+  color:#000;
+  border-color: var(--95-blue);
+  outline: none;
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+/* Win95-style menu button */
+.menubtn95 {
+  padding: 2px 12px;
+  font-size: 13px;
+  font-family: "Tahoma", sans-serif;
+  cursor: default;
+  margin: 0;
+  height: 22px;
+}
+
+/* Win95-style titlebar buttons (close, minimize) */
+.tb95 {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Tahoma", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  margin-left: 2px;
+}
+.tb95:active {
+  border-style: inset;
+}
+
+/* --- Win95 UI FIX: real menu button and centered titlebar glyphs --- */
+.menubtn95{
+  padding: 2px 12px;
+  height: 22px;
+  font: 13px "Tahoma", sans-serif;
+  cursor: default;
+}
+.controls95 .tb95{
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font: 12px "Tahoma", sans-serif;
+  line-height: 1;
+  padding: 0;
+  margin-left: 2px;
+}
+.controls95 .tb95:active{ border-style: inset; }
+
+/* --- Night Broadcast additions: notice & rules blocks --- */
+.note95{
   background: var(--95-light);
   border: 1px solid var(--95-white);
   border-right-color: var(--95-dark);
   border-bottom-color: var(--95-dark);
+  padding: 6px;
   color: #000;
 }
-
-.rules95 {
-  padding: 8px;
-  background: #fff;
-  border: 2px solid var(--95-dark);
-  border-right-color: var(--95-white);
-  border-bottom-color: var(--95-white);
-  color: #000;
+.rules95{
+  background:#fff; color:#000; padding:8px;
+  border:2px solid var(--95-dark);
+  border-right-color:var(--95-white);
+  border-bottom-color:var(--95-white);
 }
+.rules95 ul{ list-style:none; padding:0; margin:0; }
+.rules95 li{ padding:4px 0; border-bottom:1px dashed #b7b7b7; }
+.rules95 li:last-child{ border-bottom:none; }
+.rules95 .tag{ display:inline-block; font-weight:bold; padding:0 6px; margin-right:6px; background:#3a3a3a; color:#fff; border:1px solid #ffffff; }
 
-.rules95 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
-.rules95 li {
-  padding: 4px 0;
-  border-bottom: 1px dashed #b7b7b7;
-}
-
-.rules95 li:last-child {
-  border-bottom: none;
-}
-
-.rules95 .tag {
-  display: inline-block;
-  margin-right: 6px;
-  padding: 0 6px;
-  background: #3a3a3a;
-  border: 1px solid #ffffff;
-  color: #fff;
-  font-weight: bold;
-}
-
-.hp-field {
-  position: absolute !important;
-  top: auto !important;
-  left: -10000px !important;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/* Responsive */
-@media (max-width: 860px) {
-  .container95 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .menubar95,
-  .toolbar95 {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 6px;
-  }
-
-  .toolbar95 > div {
-    flex: 1 0 180px;
-  }
-
-  .toolbar95 select,
-  .toolbar95 input {
-    flex: 1 1 auto;
-  }
-
-  .titlebar95 .title {
-    font-size: 14px;
-  }
-}
+/* === Cursor UX fixes === */
+body { cursor: url('images/cursor.png'), auto; }
+input, textarea { cursor: text !important; }
+button, [role="button"], a { cursor: pointer !important; }
